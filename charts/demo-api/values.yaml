@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: ghcr.io/tienminh1727/k8s-gitops-starter
-  tag: "6310216376cf0ac1614bc318a9f7db6612bcb954"   # set by CI
+  tag: "77dcd8562961460216c573580f18525325bb1f33"   # set by CI
   pullPolicy: IfNotPresent
 
 service:
