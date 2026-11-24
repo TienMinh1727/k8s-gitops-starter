@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 env:
-  IMAGE: ghcr.io/${{ github.repository_owner }}/k8s-gitops-starter
+  IMAGE: ghcr.io/tienminh1727/k8s-gitops-starter # must be lowercase; matches charts/demo-api/values.yaml
 
 jobs:
   test:
