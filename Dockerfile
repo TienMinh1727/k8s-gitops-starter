@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 # Pull in OS security fixes so the image passes the Trivy gate in CI
 RUN apt-get update && apt-get upgrade -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
-    && pip install --no-cache-dir --upgrade pip
+    && pip uninstall -y pip setuptools wheel   # not needed at runtime; pip vendors an old setuptools flagged by Trivy
 RUN useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin app
 WORKDIR /app
 COPY --from=build /install /usr/local
