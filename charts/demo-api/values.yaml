@@ -1,0 +1,37 @@
+replicaCount: 2
+
+image:
+  repository: ghcr.io/tienminh1727/k8s-gitops-starter
+  tag: "latest"   # overwritten by CI with the commit SHA
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 250m
+    memory: 128Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 70
+
+ingress:
+  enabled: false
+  className: nginx
+  host: demo.example.com
+  tls:
+    enabled: false
+    clusterIssuer: letsencrypt-prod
+
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
